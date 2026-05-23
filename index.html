@@ -1,0 +1,1032 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Kumar | Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0f0f12;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* --- SCROLL REVEAL ENGINE --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 0px;
+            height: 3px;
+            background: linear-gradient(90deg, #00adb5, #00fff2);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+            transition: width 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s;
+        }
+
+        .reveal.active h2::after {
+            width: 60px;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: rgba(15, 15, 18, 0);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 10%;
+            background: rgba(15, 15, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar .logo span {
+            color: #00adb5;
+            text-shadow: 0 0 15px rgba(0, 173, 181, 0.5);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #eee;
+            font-weight: 500;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00adb5;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00adb5, #00fff2);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* --- HERO SECTION & CANVAS --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #161624 0%, #0f0f12 70%);
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .hero-content .btn {
+            pointer-events: auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+
+        .hero-content .dynamic-text {
+            color: #00adb5;
+            border-right: 3px solid #00adb5;
+            padding-right: 5px;
+            text-shadow: 0 0 20px rgba(0, 173, 181, 0.4);
+            white-space: nowrap;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #babcbf;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.6;
+        }
+
+        /* --- MAGNETIC GLOW BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background: #00adb5;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 30px rgba(0, 173, 181, 0.6);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+            transform: skewX(-25deg);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 150%;
+            transition: left 0.7s ease-in-out;
+        }
+
+        /* --- ABOUT ME SECTION (3D TILT DESIGN) --- */
+        .about-section {
+            padding: 8rem 10% 6rem 10%;
+            background: #121216;
+            scroll-margin-top: 70px;
+            perspective: 1000px;
+        }
+
+        .about-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #181824, #12121a);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-left: 5px solid #00adb5;
+            transform: scale(0.95);
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .reveal.active .about-card {
+            transform: scale(1);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            transform: translateZ(40px);
+        }
+
+        .about-info-item {
+            font-size: 1.1rem;
+            color: #e2e2e9;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.01);
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .about-info-item:hover {
+            background: rgba(0, 173, 181, 0.05);
+            transform: translateZ(10px) translateY(-2px);
+            border-color: rgba(0, 173, 181, 0.2);
+        }
+
+        .reveal.active .about-info-item {
+            animation: itemFadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .reveal.active .about-info-item:nth-child(1) { animation-delay: 0.1s; }
+        .reveal.active .about-info-item:nth-child(2) { animation-delay: 0.18s; }
+        .reveal.active .about-info-item:nth-child(3) { animation-delay: 0.26s; }
+        .reveal.active .about-info-item:nth-child(4) { animation-delay: 0.34s; }
+        .reveal.active .about-info-item:nth-child(5) { animation-delay: 0.42s; }
+        .reveal.active .about-info-item:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes itemFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-info-item strong {
+            color: #00adb5;
+            font-weight: 600;
+            display: inline-block;
+            width: 130px;
+        }
+
+        .about-info-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .about-info-item a:hover {
+            color: #00fff2;
+        }
+
+        .about-info-item i {
+            margin-right: 6px;
+            color: #00adb5;
+        }
+
+        /* --- PREMIUM SLIDESHOW CAROUSEL --- */
+        .slideshow-section {
+            padding: 6rem 10%;
+            scroll-margin-top: 70px;
+            background: #0f0f12;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6);
+        }
+
+        .slider {
+            display: flex;
+            aspect-ratio: 16 / 8;
+            transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .slide {
+            flex: 1 0 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: transform 0.8s ease;
+        }
+        
+        .slide:hover img {
+            transform: scale(1.04);
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(15, 15, 18, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border-left: 4px solid #00adb5;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transform: translateY(0);
+            transition: transform 0.3s;
+        }
+
+        .slider-nav {
+            display: flex;
+            gap: 12px;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10;
+        }
+
+        .slider-nav .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .slider-nav .dot.active, .slider-nav .dot:hover {
+            background-color: #00adb5;
+            transform: scale(1.25);
+            box-shadow: 0 0 10px #00adb5;
+        }
+
+        /* --- CERTIFICATES SECTION --- */
+        .certificates-section {
+            padding: 6rem 10%;
+            background: #121216;
+            scroll-margin-top: 70px;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .certificate-card {
+            background: linear-gradient(145deg, #181824, #12121a);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal.active .certificate-card {
+            animation: itemFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .reveal.active .certificate-card:nth-child(1) { animation-delay: 0.1s; }
+        .reveal.active .certificate-card:nth-child(2) { animation-delay: 0.2s; }
+        .reveal.active .certificate-card:nth-child(3) { animation-delay: 0.3s; }
+        .reveal.active .certificate-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #00adb5, #00fff2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .certificate-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 173, 181, 0.15);
+            border-color: rgba(0, 173, 181, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: #00adb5;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 173, 181, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-card:hover .cert-icon {
+            transform: scale(1.1) rotate(5deg);
+            color: #00fff2;
+        }
+
+        .certificate-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .certificate-card p {
+            font-size: 0.9rem;
+            color: #babcbf;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-btn {
+            font-size: 0.85rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            background: rgba(0, 173, 181, 0.1);
+            color: #00adb5;
+            border: 1px solid rgba(0, 173, 181, 0.3);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .certificate-card:hover .cert-btn {
+            background: #00adb5;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
+        }
+
+        /* --- PHOTO GALLERY (CINEMATIC OVERLAY) --- */
+        .gallery-section {
+            padding: 6rem 10%;
+            background: #0f0f12;
+            scroll-margin-top: 70px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .reveal.active .gallery-item {
+            animation: itemFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        .reveal.active .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .reveal.active .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .reveal.active .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .reveal.active .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .reveal.active .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .reveal.active .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(15, 15, 18, 0.95) 0%, rgba(0, 173, 181, 0.4) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-item .overlay span {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .overlay span {
+            transform: translateY(0);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            padding: 6rem 10%;
+            background: #121216;
+            scroll-margin-top: 70px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 16px;
+            background: #141419;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #00adb5;
+            background: #171722;
+            box-shadow: 0 0 20px rgba(0, 173, 181, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: #0f0f12;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .navbar { padding: 1.2rem 5%; }
+            .about-section, .slideshow-section, .certificates-section, .gallery-section, .contact-section { padding: 6rem 5% 5rem 5%; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.2rem 0;
+                background: rgba(15, 15, 18, 0.96);
+                backdrop-filter: blur(10px);
+            }
+            .navbar.scrolled { padding: 1rem 0; }
+            .nav-links { gap: 1.2rem; font-size: 0.95rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .slider { aspect-ratio: 4 / 3; }
+            .about-card { padding: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { font-size: 0.85rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            h2 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 15px; }
+            .about-info-item strong { width: 110px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="logo">My<span>Portfolio</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#slideshow">Featured</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="dynamic-text" id="typewriter"></span></h1>
+            <p>Welcome to my professional space. I create interactive and beautiful web experiences.</p>
+            <a href="#about" class="btn" id="magneticBtn">Know More About Me</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section reveal">
+        <h2>About Me</h2>
+        <div class="about-card" id="tiltCard">
+            <div class="about-grid">
+                <div class="about-info-item"><strong>Name:</strong> Ankit Kumar</div>
+                <div class="about-info-item"><strong>Date of Birth:</strong> 27/03/2009</div>
+                <div class="about-info-item"><strong>Father's Name:</strong> Manoj Kumar</div>
+                <div class="about-info-item"><strong>Mother's Name:</strong> Anita Devi</div>
+                <div class="about-info-item">
+                    <strong>Instagram:</strong> 
+                    <a href="https://instagram.com/ankit_lyrics.6" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> @ankit_lyrics.6
+                    </a>
+                </div>
+                <div class="about-info-item"><strong>Hobbies:</strong> Writing, Coding, Games</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="slideshow" class="slideshow-section reveal">
+        <h2>Featured Projects</h2>
+        <div class="slider-wrapper">
+            <div class="slider" id="mainSlider">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=525&q=80" alt="Web Design">
+                    <div class="slide-caption">Web Design Masterclass</div>
+                </div>
+                <div class="slide">
+                    <img src="https://www.aiu.edu/wp-content/uploads/2025/08/Project-Management.jpg" alt="E-Commerce UI">
+                    <div class="slide-caption">E-Commerce UI Kit</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&h=525&q=80" alt="Branding">
+                    <div class="slide-caption">Creative Brand Identity</div>
+                </div>
+            </div>
+            <div class="slider-nav" id="sliderNav"></div>
+        </div>
+    </section>
+
+    <section id="certificates" class="certificates-section reveal">
+        <h2>My Certificates</h2>
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="cert-icon"><i class="fa-brands fa-html5"></i></div>
+                <h3>HTML5</h3>
+                <p>Advanced structure layout, semantic markup, and SEO best practices execution validation.</p>
+                <a href="#" class="cert-btn">View Credentials</a>
+            </div>
+            <div class="certificate-card">
+                <div class="cert-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                <h3>CSS3 Styling</h3>
+                <p>Modern layouts including Flexbox, Grid systems, custom keyframe animations, and styling workflows.</p>
+                <a href="#" class="cert-btn">View Credentials</a>
+            </div>
+            <div class="certificate-card">
+                <div class="cert-icon"><i class="fa-brands fa-js"></i></div>
+                <h3>JavaScript ES6+</h3>
+                <p>Asynchronous runtime execution logic, DOM management engines, algorithms, and event APIs.</p>
+                <a href="#" class="cert-btn">View Credentials</a>
+            </div>
+            <div class="certificate-card">
+                <div class="cert-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Full responsive stack architecture compilation connecting modern interface rules seamlessly.</p>
+                <a href="#" class="cert-btn">View Credentials</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section reveal">
+        <h2>Photo Library & Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="./aboutme-1.jpeg" alt="Creative Design">
+                <div class="overlay"><span>Creative Design</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="./aboutme-2.jpeg" alt="UI UX Layout">
+                <div class="overlay"><span>UI/UX Layout</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="./aboutme-3.jpeg" alt="Branding">
+                <div class="overlay"><span>Branding</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="./aboutme-4.jpeg" alt="Web Development">
+                <div class="overlay"><span>Web Dev</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="./aboutme-5.jpeg" alt="Typography">
+                <div class="overlay"><span>Typography</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="./aboutme-6.jpeg" alt="Photography">
+                <div class="overlay"><span>Photography</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+        <h2>Get In Touch</h2>
+        <form class="contact-form" onsubmit="event.preventDefault();">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MyPortfolio. Crafted with ❤️ using HTML, CSS & JS.</p>
+    </footer>
+
+    <script>
+        // 1. Dynamic Glassmorphism Navbar Tracker
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. High Performance Scroll Animation Reveal Hook
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.10, rootMargin: "0px 0px -20px 0px" });
+
+        revealElements.forEach(element => revealObserver.observe(element));
+
+        // 3. UPGRADED: High-Fidelity Plexus Particle Network with Variable Depth & Gravity Field Interaction
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        const numberOfParticles = 85; // Optimized count
+        let mouse = { x: null, y: null, radius: 180 };
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+        
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3.5 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spinSpeed = Math.random() * 0.02 - 0.01;
+            }
+            update() {
+                this.angle += this.spinSpeed;
+                this.x += this.speedX + Math.sin(this.angle) * 0.15;
+                this.y += this.speedY + Math.cos(this.angle) * 0.15;
+
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        this.x += (dx / distance) * force * 1.8;
+                        this.y += (dy / distance) * force * 1.8;
+                    }
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2.5);
+                gradient.addColorStop(0, 'rgba(0, 255, 242, 1)');
+                gradient.addColorStop(0.4, 'rgba(0, 173, 181, 0.8)');
+                gradient.addColorStop(1, 'rgba(0, 173, 181, 0)');
+                ctx.fillStyle = gradient;
+                ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                
+                for (let j = i + 1; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 135) {
+                        ctx.beginPath();
+                        let alpha = (1.0 - (distance / 135)) * 0.45;
+                        let lineGrad = ctx.createLinearGradient(particlesArray[i].x, particlesArray[i].y, particlesArray[j].x, particlesArray[j].y);
+                        lineGrad.addColorStop(0, `rgba(0, 173, 181, ${alpha})`);
+                        lineGrad.addColorStop(1, `rgba(0, 255, 242, ${alpha * 0.3})`);
+                        
+                        ctx.strokeStyle = lineGrad;
+                        ctx.lineWidth = (1.2 - (distance / 135)) * 0.9;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // 4. Automated Project Slider Configuration
+        const slider = document.getElementById('mainSlider');
+        const slides = document.querySelectorAll('.slide');
+        const sliderNav = document.getElementById('sliderNav');
+        let currentSlideIndex = 0;
+        let slideInterval;
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if(index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            sliderNav.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.slider-nav .dot');
+
+        function updateSliderPosition() {
+            slider.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            updateSliderPosition();
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSliderPosition();
+            resetSliderTimer();
+        }
+
+        function startSliderTimer() {
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function resetSliderTimer() {
+            clearInterval(slideInterval);
+            startSliderTimer();
+        }
+        startSliderTimer();
+
+        // 5. Dynamic Smooth Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter');
+        const words = ["Ankit Kumar", "a Web Developer", "a Creative Designer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        // 6. Smooth Parallax 3D Card Tilt Hook
+        const tiltCard = document.getElementById('tiltCard');
+        if (tiltCard && window.innerWidth > 768) {
+            tiltCard.addEventListener('mousemove', (e) => {
+                const cardRect = tiltCard.getBoundingClientRect();
+                const mouseX = e.clientX - cardRect.left - cardRect.width / 2;
+                const mouseY = e.clientY - cardRect.top - cardRect.height / 2;
+                
+                const rotateX = (mouseY / (cardRect.height / 2)) * -10; 
+                const rotateY = (mouseX / (cardRect.width / 2)) * 10;
+                
+                tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+                tiltCard.style.boxShadow = `${-rotateY * 1.2}px ${rotateX * 1.2}px 50px rgba(0, 173, 181, 0.25), 0 20px 50px rgba(0,0,0,0.7)`;
+            });
+            
+            tiltCard.addEventListener('mouseleave', () => {
+                tiltCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+                tiltCard.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.7)';
+            });
+        }
+        
+        // 7. Magnetic Button Flow
+        const magneticBtn = document.getElementById('magneticBtn');
+        if (magneticBtn && window.innerWidth > 768) {
+            magneticBtn.addEventListener('mousemove', (e) => {
+                const bound = magneticBtn.getBoundingClientRect();
+                const x = e.clientX - bound.left - bound.width / 2;
+                const y = e.clientY - bound.top - bound.height / 2;
+                magneticBtn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+            });
+            magneticBtn.addEventListener('mouseleave', () => {
+                magneticBtn.style.transform = `translate(0px, 0px)`;
+            });
+        }
+    </script>
+</body>
+</html>
