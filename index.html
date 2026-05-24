@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,7 +156,7 @@
             z-index: 2;
             pointer-events: none;
         }
-        
+
         .hero-content .btn {
             pointer-events: auto;
         }
@@ -212,7 +212,7 @@
             left: -100%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
             transform: skewX(-25deg);
             z-index: -1;
         }
@@ -267,7 +267,7 @@
             border: 1px solid rgba(255, 255, 255, 0.01);
             transition: background 0.3s, transform 0.3s;
         }
-        
+
         .about-info-item:hover {
             background: rgba(0, 173, 181, 0.05);
             transform: translateZ(10px) translateY(-2px);
@@ -278,12 +278,29 @@
             animation: itemFadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        .reveal.active .about-info-item:nth-child(1) { animation-delay: 0.1s; }
-        .reveal.active .about-info-item:nth-child(2) { animation-delay: 0.18s; }
-        .reveal.active .about-info-item:nth-child(3) { animation-delay: 0.26s; }
-        .reveal.active .about-info-item:nth-child(4) { animation-delay: 0.34s; }
-        .reveal.active .about-info-item:nth-child(5) { animation-delay: 0.42s; }
-        .reveal.active .about-info-item:nth-child(6) { animation-delay: 0.5s; }
+        .reveal.active .about-info-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .reveal.active .about-info-item:nth-child(2) {
+            animation-delay: 0.18s;
+        }
+
+        .reveal.active .about-info-item:nth-child(3) {
+            animation-delay: 0.26s;
+        }
+
+        .reveal.active .about-info-item:nth-child(4) {
+            animation-delay: 0.34s;
+        }
+
+        .reveal.active .about-info-item:nth-child(5) {
+            animation-delay: 0.42s;
+        }
+
+        .reveal.active .about-info-item:nth-child(6) {
+            animation-delay: 0.5s;
+        }
 
         @keyframes itemFadeIn {
             to {
@@ -348,7 +365,7 @@
             filter: brightness(0.85);
             transition: transform 0.8s ease;
         }
-        
+
         .slide:hover img {
             transform: scale(1.04);
         }
@@ -364,7 +381,7 @@
             font-size: 1.15rem;
             font-weight: 600;
             border-left: 4px solid #00adb5;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             transform: translateY(0);
             transition: transform 0.3s;
         }
@@ -387,7 +404,8 @@
             transition: all 0.4s ease;
         }
 
-        .slider-nav .dot.active, .slider-nav .dot:hover {
+        .slider-nav .dot.active,
+        .slider-nav .dot:hover {
             background-color: #00adb5;
             transform: scale(1.25);
             box-shadow: 0 0 10px #00adb5;
@@ -425,10 +443,21 @@
             animation: itemFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        .reveal.active .certificate-card:nth-child(1) { animation-delay: 0.1s; }
-        .reveal.active .certificate-card:nth-child(2) { animation-delay: 0.2s; }
-        .reveal.active .certificate-card:nth-child(3) { animation-delay: 0.3s; }
-        .reveal.active .certificate-card:nth-child(4) { animation-delay: 0.4s; }
+        .reveal.active .certificate-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .reveal.active .certificate-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .reveal.active .certificate-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .reveal.active .certificate-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .certificate-card::before {
             content: '';
@@ -516,21 +545,39 @@
             border-radius: 14px;
             overflow: hidden;
             aspect-ratio: 4 / 3;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(30px);
-            border: 1px solid rgba(255,255,255,0.03);
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .reveal.active .gallery-item {
             animation: itemFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
-        .reveal.active .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .reveal.active .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .reveal.active .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .reveal.active .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .reveal.active .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .reveal.active .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .reveal.active .gallery-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .reveal.active .gallery-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .reveal.active .gallery-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .reveal.active .gallery-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .reveal.active .gallery-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .reveal.active .gallery-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
 
         .gallery-item img {
             width: 100%;
@@ -560,7 +607,7 @@
             letter-spacing: 0.5px;
             transform: translateY(20px);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .gallery-item:hover img {
@@ -590,18 +637,20 @@
             gap: 20px;
         }
 
-        .contact-form input, .contact-form textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
             padding: 16px;
             background: #141419;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             color: white;
             font-size: 1rem;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .contact-form input:focus, .contact-form textarea:focus {
+        .contact-form input:focus,
+        .contact-form textarea:focus {
             outline: none;
             border-color: #00adb5;
             background: #171722;
@@ -621,8 +670,17 @@
 
         /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 992px) {
-            .navbar { padding: 1.2rem 5%; }
-            .about-section, .slideshow-section, .certificates-section, .gallery-section, .contact-section { padding: 6rem 5% 5rem 5%; }
+            .navbar {
+                padding: 1.2rem 5%;
+            }
+
+            .about-section,
+            .slideshow-section,
+            .certificates-section,
+            .gallery-section,
+            .contact-section {
+                padding: 6rem 5% 5rem 5%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -633,24 +691,64 @@
                 background: rgba(15, 15, 18, 0.96);
                 backdrop-filter: blur(10px);
             }
-            .navbar.scrolled { padding: 1rem 0; }
-            .nav-links { gap: 1.2rem; font-size: 0.95rem; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content p { font-size: 1.1rem; }
-            .slider { aspect-ratio: 4 / 3; }
-            .about-card { padding: 2rem; }
+
+            .navbar.scrolled {
+                padding: 1rem 0;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .slider {
+                aspect-ratio: 4 / 3;
+            }
+
+            .about-card {
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
-            .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
-            .nav-links a { font-size: 0.85rem; }
-            .hero-content h1 { font-size: 2.2rem; }
-            h2 { font-size: 2rem; }
-            .about-grid { grid-template-columns: 1fr; gap: 15px; }
-            .about-info-item strong { width: 110px; }
+            .nav-links {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .about-info-item strong {
+                width: 110px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar" id="navbar">
@@ -683,7 +781,7 @@
                 <div class="about-info-item"><strong>Father's Name:</strong> Manoj Kumar</div>
                 <div class="about-info-item"><strong>Mother's Name:</strong> Anita Devi</div>
                 <div class="about-info-item">
-                    <strong>Instagram:</strong> 
+                    <strong>Instagram:</strong>
                     <a href="https://instagram.com/ankit_lyrics.6" target="_blank">
                         <i class="fa-brands fa-instagram"></i> @ankit_lyrics.6
                     </a>
@@ -698,15 +796,18 @@
         <div class="slider-wrapper">
             <div class="slider" id="mainSlider">
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=525&q=80" alt="Web Design">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=525&q=80"
+                        alt="Web Design">
                     <div class="slide-caption">Web Design Masterclass</div>
                 </div>
                 <div class="slide">
-                    <img src="https://www.aiu.edu/wp-content/uploads/2025/08/Project-Management.jpg" alt="E-Commerce UI">
+                    <img src="https://www.aiu.edu/wp-content/uploads/2025/08/Project-Management.jpg"
+                        alt="E-Commerce UI">
                     <div class="slide-caption">E-Commerce UI Kit</div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&h=525&q=80" alt="Branding">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&h=525&q=80"
+                        alt="Branding">
                     <div class="slide-caption">Creative Brand Identity</div>
                 </div>
             </div>
@@ -726,7 +827,8 @@
             <div class="certificate-card">
                 <div class="cert-icon"><i class="fa-brands fa-css3-alt"></i></div>
                 <h3>CSS3 Styling</h3>
-                <p>Modern layouts including Flexbox, Grid systems, custom keyframe animations, and styling workflows.</p>
+                <p>Modern layouts including Flexbox, Grid systems, custom keyframe animations, and styling workflows.
+                </p>
                 <a href="#" class="cert-btn">View Credentials</a>
             </div>
             <div class="certificate-card">
@@ -748,27 +850,27 @@
         <h2>Photo Library & Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="./aboutme-1.jpeg" alt="Creative Design">
+                <img src="./images/aboutme-1.jpeg" alt="Creative Design">
                 <div class="overlay"><span>Creative Design</span></div>
             </div>
             <div class="gallery-item">
-                <img src="./aboutme-2.jpeg" alt="UI UX Layout">
+                <img src="./images/aboutme-2.jpeg" alt="UI UX Layout">
                 <div class="overlay"><span>UI/UX Layout</span></div>
             </div>
             <div class="gallery-item">
-                <img src="./aboutme-3.jpeg" alt="Branding">
+                <img src="./images/aboutme-3.jpeg" alt="Branding">
                 <div class="overlay"><span>Branding</span></div>
             </div>
             <div class="gallery-item">
-                <img src="./aboutme-4.jpeg" alt="Web Development">
+                <img src="./images/aboutme-4.jpeg" alt="Web Development">
                 <div class="overlay"><span>Web Dev</span></div>
             </div>
             <div class="gallery-item">
-                <img src="./aboutme-5.jpeg" alt="Typography">
+                <img src="./images/aboutme-5.jpeg" alt="Typography">
                 <div class="overlay"><span>Typography</span></div>
             </div>
             <div class="gallery-item">
-                <img src="./aboutme-6.jpeg" alt="Photography">
+                <img src="./images/aboutme-6.jpeg" alt="Photography">
                 <div class="overlay"><span>Photography</span></div>
             </div>
         </div>
@@ -825,7 +927,7 @@
         }
         setCanvasSize();
         window.addEventListener('resize', setCanvasSize);
-        
+
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
@@ -891,19 +993,19 @@
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
                 particlesArray[i].draw();
-                
+
                 for (let j = i + 1; j < particlesArray.length; j++) {
                     const dx = particlesArray[i].x - particlesArray[j].x;
                     const dy = particlesArray[i].y - particlesArray[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    
+
                     if (distance < 135) {
                         ctx.beginPath();
                         let alpha = (1.0 - (distance / 135)) * 0.45;
                         let lineGrad = ctx.createLinearGradient(particlesArray[i].x, particlesArray[i].y, particlesArray[j].x, particlesArray[j].y);
                         lineGrad.addColorStop(0, `rgba(0, 173, 181, ${alpha})`);
                         lineGrad.addColorStop(1, `rgba(0, 255, 242, ${alpha * 0.3})`);
-                        
+
                         ctx.strokeStyle = lineGrad;
                         ctx.lineWidth = (1.2 - (distance / 135)) * 0.9;
                         ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
@@ -927,7 +1029,7 @@
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
-            if(index === 0) dot.classList.add('active');
+            if (index === 0) dot.classList.add('active');
             dot.addEventListener('click', () => goToSlide(index));
             sliderNav.appendChild(dot);
         });
@@ -1000,20 +1102,20 @@
                 const cardRect = tiltCard.getBoundingClientRect();
                 const mouseX = e.clientX - cardRect.left - cardRect.width / 2;
                 const mouseY = e.clientY - cardRect.top - cardRect.height / 2;
-                
-                const rotateX = (mouseY / (cardRect.height / 2)) * -10; 
+
+                const rotateX = (mouseY / (cardRect.height / 2)) * -10;
                 const rotateY = (mouseX / (cardRect.width / 2)) * 10;
-                
+
                 tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
                 tiltCard.style.boxShadow = `${-rotateY * 1.2}px ${rotateX * 1.2}px 50px rgba(0, 173, 181, 0.25), 0 20px 50px rgba(0,0,0,0.7)`;
             });
-            
+
             tiltCard.addEventListener('mouseleave', () => {
                 tiltCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
                 tiltCard.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.7)';
             });
         }
-        
+
         // 7. Magnetic Button Flow
         const magneticBtn = document.getElementById('magneticBtn');
         if (magneticBtn && window.innerWidth > 768) {
@@ -1029,4 +1131,5 @@
         }
     </script>
 </body>
+
 </html>
