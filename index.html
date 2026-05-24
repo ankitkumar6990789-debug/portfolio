@@ -746,6 +746,616 @@
                 width: 110px;
             }
         }
+
+        /* --- CERTIFICATE GALLERY & LIGHTBOX --- */
+        .cert-gallery-section {
+            padding: 6rem 10%;
+            background: #121216;
+            /* Matches your alternating background colors */
+            scroll-margin-top: 70px;
+        }
+
+        .cert-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .cert-gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            /* Keeps all certificates exactly the same size */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .cert-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .cert-gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: #00adb5;
+            box-shadow: 0 15px 35px rgba(0, 173, 181, 0.25);
+        }
+
+        .cert-gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .cert-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 18, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(3px);
+        }
+
+        .cert-gallery-item:hover .cert-overlay {
+            opacity: 1;
+        }
+
+        .cert-overlay i {
+            color: #00adb5;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .cert-overlay span {
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .cert-gallery-item:hover .cert-overlay i,
+        .cert-gallery-item:hover .cert-overlay span {
+            transform: translateY(0);
+        }
+
+        /* Lightbox Modal CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 12, 0.95);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 173, 181, 0.3);
+            border: 2px solid rgba(0, 173, 181, 0.5);
+            object-fit: contain;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            color: #babcbf;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .close-lightbox:hover {
+            color: #00adb5;
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+   CREATIVE MOTIVATION THOUGHT BOX
+========================================================= */
+
+        .thought-section {
+            position: relative;
+            padding: 7rem 10%;
+            background: radial-gradient(circle at center, #151520 0%, #0f0f12 70%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .thought-box {
+            position: relative;
+            max-width: 850px;
+            width: 100%;
+            padding: 4rem 3rem;
+            border-radius: 28px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.02));
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 0 40px rgba(0, 173, 181, 0.12),
+                0 0 80px rgba(0, 173, 181, 0.08),
+                inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+            overflow: hidden;
+
+            animation: floatingBox 5s ease-in-out infinite;
+        }
+
+        .thought-box::before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: rgba(0, 255, 242, 0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -80px;
+            filter: blur(10px);
+        }
+
+        .thought-box::after {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgba(0, 173, 181, 0.08);
+            border-radius: 50%;
+            bottom: -70px;
+            left: -70px;
+            filter: blur(10px);
+        }
+
+        .thought-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(135deg, #00adb5, #00fff2);
+
+            color: white;
+            font-size: 2.2rem;
+
+            box-shadow:
+                0 0 30px rgba(0, 255, 242, 0.45),
+                0 0 60px rgba(0, 173, 181, 0.25);
+
+            animation:
+                pulseGlow 2.5s infinite,
+                rotateIcon 8s linear infinite;
+        }
+
+        .thought-text {
+            font-size: 2rem;
+            line-height: 1.7;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+
+            min-height: 140px;
+
+            opacity: 0;
+            transform: translateY(25px);
+
+            animation: fadeThought 1s forwards;
+        }
+
+        .thought-glow {
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            pointer-events: none;
+
+            background:
+                linear-gradient(130deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.04),
+                    transparent);
+
+            animation: shimmer 4s linear infinite;
+        }
+
+        .thought-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+        }
+
+        .circle1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(0, 173, 181, 0.18);
+            top: -100px;
+            left: -100px;
+        }
+
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 255, 242, 0.12);
+            bottom: -100px;
+            right: -100px;
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes floatingBox {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow:
+                    0 0 20px rgba(0, 255, 242, 0.3),
+                    0 0 40px rgba(0, 173, 181, 0.2);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 40px rgba(0, 255, 242, 0.6),
+                    0 0 70px rgba(0, 173, 181, 0.35);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 20px rgba(0, 255, 242, 0.3),
+                    0 0 40px rgba(0, 173, 181, 0.2);
+            }
+        }
+
+        @keyframes rotateIcon {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes fadeThought {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+            .thought-box {
+                padding: 3rem 1.5rem;
+            }
+
+            .thought-text {
+                font-size: 1.35rem;
+                min-height: 180px;
+            }
+
+            .thought-icon {
+                width: 75px;
+                height: 75px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* =========================================================
+   ADVANCED CONTACT OPTIONS SECTION
+========================================================= */
+
+        .contact-options-section {
+            padding: 7rem 10%;
+            background:
+                radial-gradient(circle at top left,
+                    rgba(0, 173, 181, 0.08),
+                    transparent 35%),
+
+                radial-gradient(circle at bottom right,
+                    rgba(0, 255, 242, 0.06),
+                    transparent 35%),
+
+                #0f0f12;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-options-container {
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-subtitle {
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            color: #b7bcc2;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* ================= CONTACT CARD ================= */
+
+        .contact-option-card {
+            position: relative;
+            padding: 3rem 2rem;
+            border-radius: 24px;
+
+            text-decoration: none;
+            color: white;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.04),
+                    rgba(255, 255, 255, 0.02));
+
+            border: 1px solid rgba(255, 255, 255, 0.07);
+
+            backdrop-filter: blur(14px);
+
+            transition:
+                transform 0.5s ease,
+                border-color 0.5s ease,
+                box-shadow 0.5s ease;
+        }
+
+        .contact-option-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(130deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.05),
+                    transparent);
+
+            transform: translateX(-100%);
+            transition: 0.8s;
+        }
+
+        .contact-option-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .contact-option-card:hover {
+            transform: translateY(-12px) scale(1.02);
+        }
+
+        /* ================= ICON ================= */
+
+        .contact-option-icon {
+            width: 95px;
+            height: 95px;
+
+            margin: 0 auto 1.8rem;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 2.4rem;
+
+            position: relative;
+
+            transition: transform 0.5s ease;
+        }
+
+        .contact-option-card:hover .contact-option-icon {
+            transform: rotate(8deg) scale(1.08);
+        }
+
+        /* ================= TEXT ================= */
+
+        .contact-option-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-option-card p {
+            color: #b9bcc2;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 0.96rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+
+            padding: 0.8rem 1.5rem;
+
+            border-radius: 30px;
+
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            transition: all 0.4s ease;
+        }
+
+        /* ================= WHATSAPP ================= */
+
+        .whatsapp-card:hover {
+            border-color: rgba(37, 211, 102, 0.45);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.15);
+        }
+
+        .whatsapp-card .contact-option-icon {
+            background: linear-gradient(135deg, #1ebe5d, #25d366);
+            box-shadow:
+                0 0 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-card .contact-btn {
+            background: rgba(37, 211, 102, 0.12);
+            color: #25d366;
+            border: 1px solid rgba(37, 211, 102, 0.25);
+        }
+
+        .whatsapp-card:hover .contact-btn {
+            background: #25d366;
+            color: white;
+        }
+
+        /* ================= INSTAGRAM ================= */
+
+        .instagram-card:hover {
+            border-color: rgba(255, 0, 128, 0.35);
+            box-shadow: 0 20px 40px rgba(255, 0, 128, 0.15);
+        }
+
+        .instagram-card .contact-option-icon {
+            background:
+                linear-gradient(135deg,
+                    #f58529,
+                    #dd2a7b,
+                    #8134af,
+                    #515bd4);
+
+            box-shadow:
+                0 0 30px rgba(221, 42, 123, 0.3);
+        }
+
+        .instagram-card .contact-btn {
+            background: rgba(255, 0, 128, 0.12);
+            color: #ff4da6;
+            border: 1px solid rgba(255, 0, 128, 0.25);
+        }
+
+        .instagram-card:hover .contact-btn {
+            background: #ff4da6;
+            color: white;
+        }
+
+        /* ================= EMAIL ================= */
+
+        .email-card:hover {
+            border-color: rgba(0, 173, 181, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 173, 181, 0.18);
+        }
+
+        .email-card .contact-option-icon {
+            background: linear-gradient(135deg, #00adb5, #00fff2);
+
+            box-shadow:
+                0 0 30px rgba(0, 173, 181, 0.35);
+        }
+
+        .email-card .contact-btn {
+            background: rgba(0, 173, 181, 0.12);
+            color: #00fff2;
+            border: 1px solid rgba(0, 173, 181, 0.25);
+        }
+
+        .email-card:hover .contact-btn {
+            background: #00adb5;
+            color: white;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .contact-options-section {
+                padding: 6rem 5%;
+            }
+
+            .contact-option-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .contact-option-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+        }
     </style>
 </head>
 
@@ -844,7 +1454,52 @@
                 <a href="#" class="cert-btn">View Credentials</a>
             </div>
         </div>
+
     </section>
+    <section id="cert-gallery" class="cert-gallery-section reveal">
+        <h2>My Certifications</h2>
+        <div class="cert-gallery-grid">
+
+            <div class="cert-gallery-item" onclick="openLightbox('./images/htmlcerf.jpeg')">
+                <img src="./images/htmlcerf.jpeg" alt="HTML5 Certificate">
+                <div class="cert-overlay">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    <span>HTML5 Masterclass</span>
+                </div>
+            </div>
+
+            <div class="cert-gallery-item" onclick="openLightbox('./images/csscerf.jpeg')">
+                <img src="./images/csscerf.jpeg" alt="CSS3 Certificate">
+                <div class="cert-overlay">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    <span>CSS3 & Flexbox</span>
+                </div>
+            </div>
+
+            <div class="cert-gallery-item" onclick="openLightbox('./images/JScerf.jpeg')">
+                <img src="./images/JScerf.jpeg" alt="JavaScript Certificate">
+                <div class="cert-overlay">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    <span>JavaScript ES6+</span>
+                </div>
+            </div>
+
+            <div class="cert-gallery-item" onclick="openLightbox('./images/webdevcerf.jpeg')">
+                <img src="./images/webdevcerf.jpeg" alt="Full Stack Certificate">
+                <div class="cert-overlay">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    <span>Responsive Web Dev</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
 
     <section id="gallery" class="gallery-section reveal">
         <h2>Photo Library & Gallery</h2>
@@ -875,15 +1530,88 @@
             </div>
         </div>
     </section>
+    <!-- ================= CONTACT OPTIONS SECTION ================= -->
 
-    <section id="contact" class="contact-section reveal">
-        <h2>Get In Touch</h2>
-        <form class="contact-form" onsubmit="event.preventDefault();">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
+    <section class="contact-options-section reveal">
+
+        <div class="contact-options-container">
+
+            <h2>Connect With Me</h2>
+
+            <p class="contact-subtitle">
+                Have an idea, project, or collaboration? Feel free to contact me anytime.
+            </p>
+
+            <div class="contact-options-grid">
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919999999999" target="_blank" class="contact-option-card whatsapp-card">
+                    <div class="contact-option-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+
+                    <h3>WhatsApp</h3>
+
+                    <p>Chat instantly for quick communication and project discussions.</p>
+
+                    <span class="contact-btn">Message Now</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/ankit_lyrics.6" target="_blank"
+                    class="contact-option-card instagram-card">
+
+                    <div class="contact-option-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                    <h3>Instagram</h3>
+
+                    <p>Follow my creative journey and connect socially.</p>
+
+                    <span class="contact-btn">Visit Profile</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:yourmail@gmail.com" class="contact-option-card email-card">
+
+                    <div class="contact-option-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <h3>Email</h3>
+
+                    <p>Send detailed messages regarding work or collaboration.</p>
+
+                    <span class="contact-btn">Send Email</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MOTIVATION THOUGHT BOX ================= -->
+    <section class="thought-section reveal">
+        <div class="thought-bg-circle circle1"></div>
+        <div class="thought-bg-circle circle2"></div>
+
+        <div class="thought-box">
+            <div class="thought-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <h2>Daily Motivation</h2>
+
+            <p id="motivationalThought" class="thought-text">
+                Success doesn’t come from comfort zones.
+            </p>
+
+            <div class="thought-glow"></div>
+        </div>
+    </section>
     </section>
 
     <footer>
@@ -1129,6 +1857,110 @@
                 magneticBtn.style.transform = `translate(0px, 0px)`;
             });
         }
+
+        // 8. Certificate Lightbox Logic
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+
+            // Set the clicked image source to the lightbox image
+            lightboxImg.src = imageSrc;
+
+            // Display the lightbox
+            lightbox.classList.add('active');
+
+            // Prevent scrolling on the main page while lightbox is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+
+            // Restore scrolling on the main page
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox if the user clicks anywhere outside the image
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target !== document.getElementById('lightbox-img')) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with the 'Escape' key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === "Escape") {
+                closeLightbox();
+            }
+        }); /* =========================================================
+   MOTIVATIONAL THOUGHT ENGINE
+========================================================= */
+
+        const motivationalThoughts = [
+
+            "Push yourself because nobody else is going to do it for you.",
+
+            "Your future is created by what you do today, not tomorrow.",
+
+            "Dream big. Start small. Act now.",
+
+            "Discipline is stronger than motivation.",
+
+            "Every expert was once a beginner.",
+
+            "Small progress is still progress.",
+
+            "Don’t stop until you are proud.",
+
+            "Success begins with self-belief.",
+
+            "You are one decision away from a completely different life.",
+
+            "The pain of hard work fades, but regret lasts forever.",
+
+            "Focus on your goals, not the obstacles.",
+
+            "Your only limit is your mindset.",
+
+            "Work silently. Let success make the noise.",
+
+            "Consistency creates greatness.",
+
+            "Difficult roads lead to beautiful destinations.",
+
+            "Winners are not people who never fail, but people who never quit.",
+
+            "The best investment is investing in yourself.",
+
+            "Make your dreams so strong that excuses become irrelevant."
+
+        ];
+
+        const thoughtElement = document.getElementById("motivationalThought");
+
+        let thoughtIndex = 0;
+
+        function changeThought() {
+
+            thoughtElement.style.opacity = "0";
+            thoughtElement.style.transform = "translateY(30px)";
+
+            setTimeout(() => {
+
+                thoughtIndex = (thoughtIndex + 1) % motivationalThoughts.length;
+
+                thoughtElement.textContent = motivationalThoughts[thoughtIndex];
+
+                thoughtElement.style.opacity = "1";
+                thoughtElement.style.transform = "translateY(0px)";
+
+            }, 500);
+        }
+
+        /* Change Thought Every 20 Seconds */
+        setInterval(changeThought, 20000);
+
     </script>
 </body>
 
